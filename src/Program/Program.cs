@@ -13,7 +13,7 @@ class Program
         Wizard gandalf = new Wizard("Gandalf");
         gandalf.AddItem(book);
 
-        Dwarf gimli = new Dwarf("Gimli");
+        Archer gimli = new Archer("Gimli");
 
         Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
         Console.WriteLine($"Gandalf attacks Gimli with ⚔️ {gandalf.AttackValue}");
