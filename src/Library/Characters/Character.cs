@@ -5,7 +5,7 @@ public abstract class Character
 {
     private int health = 100;
 
-    private List<IItem> items = new List<IItem>();
+    public List<IItem> items = new List<IItem>();
 
     public Character(string name)
     {
@@ -14,7 +14,7 @@ public abstract class Character
 
     public string Name { get; set; }
 
-    public int AttackValue
+    public virtual int AttackValue
     {
         get
         {
@@ -30,7 +30,7 @@ public abstract class Character
         }
     }
 
-    public int DefenseValue
+    public virtual int DefenseValue
     {
         get
         {
