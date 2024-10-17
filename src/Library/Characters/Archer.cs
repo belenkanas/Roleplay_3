@@ -11,6 +11,5 @@ public class Archer: Heroes
         this.AddItem(new Bow());
         this.AddItem(new Helmet());
     }
-
-
+ 
 }

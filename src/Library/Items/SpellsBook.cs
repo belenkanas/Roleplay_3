@@ -18,7 +18,7 @@ public class SpellsBook: IMagicalAttackItem, IMagicalDefenseItem
             return value;
         }
     }
-
+ 
     public int DefenseValue
     {
         get

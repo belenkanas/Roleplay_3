@@ -8,10 +8,12 @@ public class WizardEnemie : Villains
     public WizardEnemie(string name, int vp) : base(name, vp)
     {
         this.Name = name;
+        this.VP = vp;
 
         this.AddItem(new Staff());
     }
 
+    
     public override int AttackValue 
     {
         get
