@@ -20,8 +20,8 @@ public abstract class Heroes : Character
         {
         }
 
-        public void AñiadirVP(Villians villano)
+        public void AñiadirVP(Villains villano)
         {
-            this.VP= this.VP+villano.VP;
+            this.VP = this.VP + villano.VP;
         }
     }

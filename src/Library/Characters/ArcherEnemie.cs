@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 namespace Ucu.Poo.RoleplayGame;
 
-public class Archer: Heroes
+public class ArcherEnemie: Villains
 {
 
-    public Archer(string name) : base(name)
+    public ArcherEnemie(string name, int vp) : base(name, vp)
     {
         this.Name = name;
 

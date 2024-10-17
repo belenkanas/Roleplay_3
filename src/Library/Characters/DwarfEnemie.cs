@@ -1,16 +1,16 @@
 using System.Collections.Generic;
+
 namespace Ucu.Poo.RoleplayGame;
 
-public class Archer: Heroes
+public class DwarfEnemie: Villains
 {
 
-    public Archer(string name) : base(name)
+    public DwarfEnemie(string name, int vp) : base (name, vp)
     {
         this.Name = name;
 
-        this.AddItem(new Bow());
+        this.AddItem(new Axe());
         this.AddItem(new Helmet());
     }
-
 
 }
