@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace Ucu.Poo.RoleplayGame;
 
-public class Wizard: Character
+public class Wizard: Heroes
 {
     private List<IMagicalItem> magicalItems = new List<IMagicalItem>();
 
@@ -32,6 +32,8 @@ public class Wizard: Character
                 }
             }
             return value;
+
+            
         }
     }
 
