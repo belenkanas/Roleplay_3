@@ -9,4 +9,13 @@ public abstract class Villains : Character
         {
             this.VP = vp;
         }
+
+        public void ReceiveHeroeAttack(int vp)
+        {
+        if (vp > 0 && this.Health==0)
+        {
+            this.VP -= vp;
+        }
+        }
+
     }
