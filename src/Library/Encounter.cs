@@ -13,24 +13,34 @@ namespace Ucu.Poo.RoleplayGame
         //Lo mismo con la lista de villanos
         private List<Villains> villains;
 
-        //El constructor necesita conocer a los personajes y debe asegurar que por lo menos haya uno en cada equipo, de lo contrario
-        //no se podrá hacer la partida.
-        public Encounter(List<Heroes> heroes, List<Villains> villains)
+        public int TotalHeroes => heroes.Count;
+        public int TotalVillanos => villains.Count;
+
+        public void AddHeroe(Heroes heroe)  //Agrega Heroe y suma uno al total
         {
-            if (heroes.Count == 0 || villains.Count == 0)
-            {
-                Console.WriteLine($"Debe estar presente al menos un héroe o un villano para poder iniciar la partida");
-            }
-            else
-            {
-                this.heroes = heroes;
-                this.villains = villains;
-            }
+            this.heroes.Add(heroe);
+            Console.WriteLine($"{heroe.Name} ha sido añadido al equipo de Héroes");
         }
+
+        public void AddVillano(Villains villano)    //Agrega Villano y suma uno al total
+        {
+            this.villains.Add(villano);
+            Console.WriteLine($"{villano.Name} ha sido agregado al equipo de Villanos.");
+            
+        }
+        
 
         public void DoEncounter()
         {
-            
+            while (TotalHeroes > 0 && TotalVillanos > 0)
+            {
+                VillainsAttack();
+                HeroesAttack();
+                RemoveHeroe();
+                RemoveVillano();
+                CheckEndGame();
+
+            }
         }
 
         //Primero atacan los villanos, se analiza uno por uno la lista del villano y se busca al héroe con mismo índice
@@ -41,14 +51,12 @@ namespace Ucu.Poo.RoleplayGame
 
             foreach (Villains villain in villains)
             {
-                Heroes heroeAtacado = heroes[indiceHeroeAtacado];
 
-                if (heroeAtacado.Health > 0)
+                if (this.heroes[indiceHeroeAtacado].Health > 0)
                 {
-                    int daño = villain.AttackValue;
-                    heroeAtacado.ReceiveAttack(daño);
+                    this.heroes[indiceHeroeAtacado].ReceiveAttack(villain.AttackValue);
 
-                    Console.WriteLine($"{villain.Name} ha atacado a {heroeAtacado.Name} con {daño}");
+                    Console.WriteLine($"{villain.Name} ha atacado a {this.heroes[indiceHeroeAtacado].Name} con {villain.AttackValue}");
                 }
 
                 indiceHeroeAtacado += 1;
@@ -72,21 +80,68 @@ namespace Ucu.Poo.RoleplayGame
                     {
                         if (villain.Health > 0)
                         {
-                            int power = hero.AttackValue;
 
-                            villain.ReceiveAttack(power);
+                            villain.ReceiveAttack(hero.AttackValue);
 
-                            Console.WriteLine($"{hero.Name} ha atacado a {villain.Name} con {power}");
+                            Console.WriteLine($"{hero.Name} ha atacado a {villain.Name} con {hero.AttackValue}");
                         
                             if (villain.Health <= 0)
                             {
                                 hero.AddVp(villain);
                                 Console.WriteLine($"{hero.Name} ha derrotado a {villain.Name}. Ha ganado {villain.VP} puntos de victoria");
+                                if (villain.VP >= 5)
+                                {
+                                    hero.Cure();
+                                    Console.WriteLine($"{hero.Name} ha sido curado");
+                                }
                             }
                         }
                     }
                 }
             }
         }
+
+        public void CheckEndGame()
+        {
+            if (TotalHeroes < 1)
+            {
+                Console.WriteLine("Los héroes han sido derrotados");
+            }
+            else if (TotalVillanos < 1)
+            {
+                Console.WriteLine("Los malos han sido derrotados");
+            }
+            else
+            {
+                Console.WriteLine("Continúa el juego");
+            }
+        }
+
+        public void RemoveHeroe()   //Remueve Heroe
+        {
+            foreach (Heroes heroe in this.heroes)
+            {
+                if (heroe.Health<=0)
+                {
+                    this.heroes.Remove(heroe);
+                    Console.WriteLine
+                    ($"{heroe.Name} ya no puede continuar, Heroes restantes : {TotalHeroes}");
+                }
+            }
+        }
+        public void RemoveVillano() //Remueve Villano
+        {
+            foreach (Villains villano in this.villains)
+            {
+                if(villano.Health <= 0)
+                {
+                    this.villains.Remove(villano);
+                    Console.WriteLine
+                    ($"{villano.Name} ha sido aniquilado, Villanos restantes {TotalVillanos}");
+                }
+            }
+        }
+
+        
     }
 }
