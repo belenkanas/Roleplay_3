@@ -18,12 +18,12 @@ class Program
         gimli.AddItem(axe);
         peter.AddItem(axe);
         IAttackItem bow = new Bow();
-        gimli.AddItem(bow);
+        harry.AddItem(bow);
         IAttackItem staff = new Staff();
         hermione.AddItem(staff);
         harry.AddItem(staff);
         IDefenseItem helmet = new Helmet();
-        gimli.AddItem(helmet);
+        peter.AddItem(helmet);
         IDefenseItem staffdef = new Staff();
         ron.AddItem(staffdef);
         
