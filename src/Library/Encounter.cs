@@ -25,7 +25,7 @@ namespace Ucu.Poo.RoleplayGame
             
         }
 
-        private void VillainsAtaque()
+        private void VillainsAttack()
         {
             int indiceHeroeAtacado = 0;
 
@@ -39,6 +39,40 @@ namespace Ucu.Poo.RoleplayGame
                     heroeAtacado.ReceiveAttack(daño);
 
                     Console.WriteLine($"{villain.Name} ha atacado a {heroeAtacado.Name} con {daño}");
+                }
+
+                indiceHeroeAtacado += 1;
+            }
+
+            if (indiceHeroeAtacado >= heroes.Count)
+            {
+                indiceHeroeAtacado = 0;
+            }
+        }
+
+        private void HeroesAttack()
+        {
+            foreach (Heroes hero in heroes)
+            {
+                if (hero.Health > 0)
+                {
+                    foreach(Villains villain in villains)
+                    {
+                        if (villain.Health > 0)
+                        {
+                            int power = hero.AttackValue;
+
+                            villain.ReceiveAttack(power);
+
+                            Console.WriteLine($"{hero.Name} ha atacado a {villain.Name} con {power}");
+                        
+                            if (villain.Health <= 0)
+                            {
+                                hero.AddVp(villain);
+                                Console.WriteLine($"{hero.Name} ha derrotado a {villain.Name}. Ha ganado {villain.VP} puntos de victoria");
+                            }
+                        }
+                    }
                 }
             }
         }
