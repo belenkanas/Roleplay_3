@@ -8,10 +8,10 @@ namespace Ucu.Poo.RoleplayGame
     public class Encounter
     {
         //Poniendo la lista privada de Heroes nos aseguramos de que no se modifique mediante la partida
-        private List<Heroes> heroes;
+        public List<Heroes> heroes = new List<Heroes>();
         
         //Lo mismo con la lista de villanos
-        private List<Villains> villains;
+        public List<Villains> villains = new List<Villains>();
 
         public int TotalHeroes => heroes.Count;
         public int TotalVillanos => villains.Count;
@@ -25,7 +25,7 @@ namespace Ucu.Poo.RoleplayGame
         public void AddVillano(Villains villano)    //Agrega Villano y suma uno al total
         {
             this.villains.Add(villano);
-            Console.WriteLine($"{villano.Name} ha sido agregado al equipo de Villanos.");
+            Console.WriteLine($"{villano.Name} ha sido añadido al equipo de Villanos");
             
         }
         
@@ -56,7 +56,7 @@ namespace Ucu.Poo.RoleplayGame
                 {
                     this.heroes[indiceHeroeAtacado].ReceiveAttack(villain.AttackValue);
 
-                    Console.WriteLine($"{villain.Name} ha atacado a {this.heroes[indiceHeroeAtacado].Name} con {villain.AttackValue}");
+                    Console.WriteLine($"{villain.Name} ha atacado ⚔️ a {this.heroes[indiceHeroeAtacado].Name} con {villain.AttackValue}");
                 }
 
                 indiceHeroeAtacado += 1;
@@ -83,7 +83,7 @@ namespace Ucu.Poo.RoleplayGame
 
                             villain.ReceiveAttack(hero.AttackValue);
 
-                            Console.WriteLine($"{hero.Name} ha atacado a {villain.Name} con {hero.AttackValue}");
+                            Console.WriteLine($"{hero.Name} ha atacado ⚔️ a {villain.Name} con {hero.AttackValue}");
                         
                             if (villain.Health <= 0)
                             {
@@ -109,7 +109,7 @@ namespace Ucu.Poo.RoleplayGame
             }
             else if (TotalVillanos < 1)
             {
-                Console.WriteLine("Los malos han sido derrotados");
+                Console.WriteLine("Los enemigos han sido derrotados");
             }
             else
             {
