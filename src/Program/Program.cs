@@ -12,7 +12,7 @@ class Program
         Heroes peter = new Dwarf("Peter");
         Heroes harry = new Wizard("Harry");
         Heroes ron = new Knight("Ron");
-        Heroes hermione = new Wizard("Hermione");
+        Wizard hermione = new Wizard("Hermione");
         
         IAttackItem axe = new Axe();
         gimli.AddItem(axe);
@@ -26,18 +26,25 @@ class Program
         peter.AddItem(helmet);
         IDefenseItem staffdef = new Staff();
         ron.AddItem(staffdef);
+
+        SpellsBook bookHermione = new SpellsBook();
+        ISpell hechizoHermione1 = new SpellOne();
+        ISpell hechizoHermione2 = new SpellOne();
+        bookHermione.AddSpell(hechizoHermione1);
+        bookHermione.AddSpell(hechizoHermione2);
+        hermione.AddItem(bookHermione); 
         
-        Villains gandalf = new WizardEnemie("Gandalf", 50);
+        WizardEnemie gandalf = new WizardEnemie("Gandalf", 50);
         Villains draco = new WizardEnemie("Draco", 80);
         Villains voldemort = new DwarfEnemie("Voldemort", 30);
         Villains luna = new KnightEnemie("Luna", 20);
         Villains snape = new ArcherEnemie("Snape", 50);
         
-        SpellsBook book = new SpellsBook();
-        ISpell hechizo = new SpellOne();
-        book.AddSpell(hechizo);
+        SpellsBook bookGandalf = new SpellsBook();
+        ISpell hechizoGandalf1 = new SpellOne();
+        bookGandalf.AddSpell(hechizoGandalf1);
+        gandalf.AddItem(bookGandalf);
         
-        //gandalf.AddItem(book); no me deja
         IAttackItem sword = new Sword();
         gandalf.AddItem(sword);
         draco.AddItem(axe);
@@ -45,7 +52,7 @@ class Program
         voldemort.AddItem(bow);
         IDefenseItem armor = new Armor();
         gandalf.AddItem(armor);
-        luna.AddItem(helmet);
+        snape.AddItem(helmet);
         draco.AddItem(staffdef);
         
         encuentro.AddHeroe(gimli);
