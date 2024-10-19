@@ -45,7 +45,7 @@ class Program
         voldemort.AddItem(bow);
         IDefenseItem armor = new Armor();
         gandalf.AddItem(armor);
-        snape.AddItem(helmet);
+        luna.AddItem(helmet);
         draco.AddItem(staffdef);
         
         encuentro.AddHeroe(gimli);

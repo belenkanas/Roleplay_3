@@ -141,7 +141,5 @@ namespace Ucu.Poo.RoleplayGame
                 }
             }
         }
-
-        
     }
 }
