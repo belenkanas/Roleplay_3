@@ -3,10 +3,10 @@ using Ucu.Poo.RoleplayGame;
 
 namespace LibraryTests;
 
-public class EncounterTests
+public class EncounterAddCharacterTests
 {
     [Test]
-    public void EncuentroTests()
+    public void EncuentroAddCharacterTests()
     {
         Encounter _encounter = new Encounter();
         
